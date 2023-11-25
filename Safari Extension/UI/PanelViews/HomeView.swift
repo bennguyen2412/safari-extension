@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+  @ObservedObject var currentTab: SelectedTab
     var body: some View {
         VStack {
             Text("You're all set! 🥳")
@@ -24,18 +25,19 @@ struct HomeView: View {
             
             HStack {
                 Button("Settings") {
-                    
+                  currentTab.currentTab = 1
                 }
                 .padding(.trailing)
                 Button("Tip Jar") {
-                    
+                  currentTab.currentTab = 2
                 }
             }
         }
+        .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
 #Preview {
-    HomeView()
+  HomeView(currentTab: SelectedTab())
 }
